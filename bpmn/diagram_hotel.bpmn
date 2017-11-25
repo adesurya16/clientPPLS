@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.10.0">
+  <bpmn:collaboration id="Collaboration_0g3v2t5">
+    <bpmn:participant id="Participant_0qxcv4c" name="Sistem booking hotel" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="true">
+    <bpmn:task id="Task_0wcpiie" name="Ekstraksi informasi dari tiket">
+      <bpmn:incoming>SequenceFlow_1swjx7x</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1vdlntz</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:serviceTask id="Task_1nr8nih" name="Mendapatkan list hotel.">
+      <bpmn:incoming>SequenceFlow_1vdlntz</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1vnlmxd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:task id="Task_178fkse" name="Mengambil hotel terbaik sesuai harga dan kualitas">
+      <bpmn:incoming>SequenceFlow_1vnlmxd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0aq4ae8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_0uxi5ar" name="Menampilkan list hotel">
+      <bpmn:incoming>SequenceFlow_0aq4ae8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xrjsp2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="EndEvent_1eforsl">
+      <bpmn:incoming>SequenceFlow_0xrjsp2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:startEvent id="StartEvent_1" name="User selesai memesan tiket">
+      <bpmn:outgoing>SequenceFlow_1swjx7x</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1swjx7x" sourceRef="StartEvent_1" targetRef="Task_0wcpiie" />
+    <bpmn:sequenceFlow id="SequenceFlow_1vdlntz" sourceRef="Task_0wcpiie" targetRef="Task_1nr8nih" />
+    <bpmn:sequenceFlow id="SequenceFlow_1vnlmxd" sourceRef="Task_1nr8nih" targetRef="Task_178fkse" />
+    <bpmn:sequenceFlow id="SequenceFlow_0aq4ae8" sourceRef="Task_178fkse" targetRef="Task_0uxi5ar" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xrjsp2" sourceRef="Task_0uxi5ar" targetRef="EndEvent_1eforsl" />
+    <bpmn:textAnnotation id="TextAnnotation_0cdg9l7">    <bpmn:text>Mendapatkan data yang dibutuhkan untuk mendapat rekomendasi hotel</bpmn:text>
+</bpmn:textAnnotation>
+    <bpmn:association id="Association_1cjnydk" sourceRef="Task_0wcpiie" targetRef="TextAnnotation_0cdg9l7" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0g3v2t5">
+      <bpmndi:BPMNShape id="Participant_0qxcv4c_di" bpmnElement="Participant_0qxcv4c">
+        <dc:Bounds x="123" y="-5" width="909" height="371" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0wcpiie_di" bpmnElement="Task_0wcpiie">
+        <dc:Bounds x="365.1017587939699" y="89" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1swjx7x_di" bpmnElement="SequenceFlow_1swjx7x">
+        <di:waypoint xsi:type="dc:Point" x="289" y="129" />
+        <di:waypoint xsi:type="dc:Point" x="365" y="129" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="327" y="108" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0cdg9l7_di" bpmnElement="TextAnnotation_0cdg9l7">
+        <dc:Bounds x="418.1017587939699" y="185.5741206030151" width="99.99214824120602" height="96.73366834170854" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1cjnydk_di" bpmnElement="Association_1cjnydk">
+        <di:waypoint xsi:type="dc:Point" x="435" y="169" />
+        <di:waypoint xsi:type="dc:Point" x="443" y="186" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0i8qiid_di" bpmnElement="Task_1nr8nih">
+        <dc:Bounds x="567" y="89" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vdlntz_di" bpmnElement="SequenceFlow_1vdlntz">
+        <di:waypoint xsi:type="dc:Point" x="465" y="129" />
+        <di:waypoint xsi:type="dc:Point" x="567" y="129" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="516" y="108" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_178fkse_di" bpmnElement="Task_178fkse">
+        <dc:Bounds x="751.8348484848485" y="89" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vnlmxd_di" bpmnElement="SequenceFlow_1vnlmxd">
+        <di:waypoint xsi:type="dc:Point" x="667" y="129" />
+        <di:waypoint xsi:type="dc:Point" x="752" y="129" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="709.5" y="108" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0uxi5ar_di" bpmnElement="Task_0uxi5ar">
+        <dc:Bounds x="752" y="214.75757575757575" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0aq4ae8_di" bpmnElement="SequenceFlow_0aq4ae8">
+        <di:waypoint xsi:type="dc:Point" x="802" y="169" />
+        <di:waypoint xsi:type="dc:Point" x="802" y="215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="817" y="186" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1eforsl_di" bpmnElement="EndEvent_1eforsl">
+        <dc:Bounds x="908.8348484848485" y="237" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="926.8348484848485" y="277" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xrjsp2_di" bpmnElement="SequenceFlow_0xrjsp2">
+        <di:waypoint xsi:type="dc:Point" x="852" y="255" />
+        <di:waypoint xsi:type="dc:Point" x="909" y="255" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="880.5" y="234" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0gv59o0_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="253" y="111" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="235" y="153" width="72" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

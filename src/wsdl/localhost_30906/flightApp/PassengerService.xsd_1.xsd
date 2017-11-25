@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.com/">
+
+<xs:element name="createPassenger" type="tns:createPassenger"/>
+
+<xs:element name="createPassengerResponse" type="tns:createPassengerResponse"/>
+
+<xs:element name="getPassengerById" type="tns:getPassengerById"/>
+
+<xs:element name="getPassengerByIdResponse" type="tns:getPassengerByIdResponse"/>
+
+<xs:element name="getPassengerByUserId" type="tns:getPassengerByUserId"/>
+
+<xs:element name="getPassengerByUserIdResponse" type="tns:getPassengerByUserIdResponse"/>
+
+<xs:element name="passenger" type="tns:passenger"/>
+
+<xs:element name="updatePassenger" type="tns:updatePassenger"/>
+
+<xs:element name="updatePassengerResponse" type="tns:updatePassengerResponse"/>
+
+<xs:element name="user" type="tns:user"/>
+
+<xs:complexType name="getPassengerById">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPassengerByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:passenger" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="passenger">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="idNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="idUsed" type="xs:string" minOccurs="0"/>
+<xs:element name="passengerName" type="xs:string" minOccurs="0"/>
+<xs:element name="userId" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="validDate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPassengerByUserId">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPassengerByUserIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:passenger" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePassenger">
+<xs:sequence>
+<xs:element name="passenger" type="tns:passenger" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePassengerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createPassenger">
+<xs:sequence>
+<xs:element name="passenger" type="tns:passenger" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createPassengerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
